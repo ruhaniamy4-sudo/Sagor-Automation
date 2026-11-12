@@ -1,8 +1,18 @@
 {
+  "services": {
+    "sagor-automation": {
+      "root": ".",
+      "entrypoint": "app.py",
+      "buildCommand": "pip install -r requirements.txt"
+    }
+  },
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "/api/index"
+      "destination": {
+        "type": "service",
+        "service": "sagor-automation"
+      }
     }
   ]
 }
