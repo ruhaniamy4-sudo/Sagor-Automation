@@ -6,6 +6,14 @@ from steadfast import create_steadfast_order
 
 app = Flask(__name__)
 
+@app.route("/", methods=["GET"])
+def index():
+    return jsonify({
+        "status": "online",
+        "service": "Sagor Facebook to Steadfast Automation",
+        "webhook_endpoint": "/webhook"
+    }), 200
+
 @app.route("/webhook", methods=["GET"])
 def verify_webhook():
     mode = request.args.get("hub.mode")
